@@ -1,0 +1,84 @@
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<link rel="stylesheet" href="./style.css">
+	<style type="text/css">
+		div {
+			padding: 15px;
+		}
+
+		body {
+			width: 100%;
+			margin: auto;
+		}
+
+		#testconfig {
+			width: 50%;
+			height: 300px;
+			position: absolute;
+			background: white;
+			z-index: 9;
+		}
+		
+	</style>
+
+	<!-- for tests, DO NOT MODIFY next line -->
+	<link rel="stylesheet" href="https://unpkg.com/mocha/mocha.css" />
+</head>
+<body>
+	<!-- DO NOT MODIFY THESE LINES -->
+	<!-- START tests -->
+	<div id="tests" class="container">
+		<div>
+			<button onclick="toggleTests()">ტესტების კონფიგურაციის ჩვენება/დამალვა</button>
+		</div>
+		<iframe hidden=true id="testconfig" src="./tests.html"></iframe>
+		<div id="mocha"></div>
+
+		<script src="https://unpkg.com/chai/chai.js"></script>
+		<script src="https://unpkg.com/mocha/mocha.js"></script>
+
+		<script class="mocha-init">
+			mocha.setup('bdd');
+			// mocha.checkLeaks();
+		</script>	
+		<script src="./config.js"></script>
+		<script src="./tests_login.js"></script>
+	</div>
+	<!-- END tests -->
+	<!-- You can modify lines after this -->
+
+	<!-- You can modify lines after this -->
+	<!-- ეს ნაწილი პროექტში აღარ შედის
+	<script>
+		var status = localStorage.getItem('status')
+		if (status == "loggedin") {
+			window.location = "./index.html"
+		}
+	</script>
+	 -->
+	<div id="app">
+		<div>
+			<input type="text" id="username" placeholder="username">
+		</div>
+		<div>
+			<input type="password" id="password" placeholder="password">
+		</div>
+		<div>
+			<div id="error_message">
+
+			</div>
+		</div>
+		<div>
+			<button id="login" onclick="login()">
+				log in
+			</button>
+
+		</div>		
+	</div>
+	<script type="text/javascript" src="./database.js"></script>
+	<script type="text/javascript" src="./login.js"></script>
+	
+</body>
+</html>
