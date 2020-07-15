@@ -50,8 +50,25 @@
 
 	<!-- You can modify lines after this -->
 	<div id="app">
+		<!--  გვერდზე არსებობს input ელემენტი, რომლის id არის username. ელემენტის type არის text -->
+		<div>
+		   <input type="text" id="username" placeholder="username">
+	    </div>
+		<!-- //გვერდზე არსებობს input ელემენტი, რომლის id არის password. ელემენტის type არის password -->
+		<div>
+		   <input type="password" id="password" placeholder="password">
+		</div>
+		<!-- გვერდზე არსებობს input ელემენტი, რომლის id არის repeat_password. ელემენტის type არის password‣ -->
+		<div>
+			<input type="password" id="repeat_password" placeholder="repeat password">
+		 </div>
+		 <!-- ვერდზე არსებობს რეგისტრაციის ღილაკი, რომლის id არის register. -->
+		 <div>
+			<button id="register" onclick="register()">
+				register
+			</button>
 
-
+		</div>
 		
 	</div>
 	<script type="text/javascript" src="./database.js"></script>

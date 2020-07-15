@@ -30,7 +30,10 @@ function newPost() {
 		likes: []
 	})
 	var elem = createPost(post)
-	addNewPost(elem)
+	//ახალი პოსტი არ დაიდოს, თუ post_text ველში ტექსტი არ არის შეყვანილი
+	if(getPostText().length != 0){
+		addNewPost(elem)
+	}
 }
 
 function getCommentId() {
@@ -40,6 +43,8 @@ function getPostText() {
 	var postInputElement = document.getElementById('post_text')
 	return postInputElement.value
 }
+
+
 
 function getUser() {
 	return localStorage.getItem('currentUser') || 'unknown user'
@@ -71,6 +76,9 @@ function createPost(post) {
 			<div class="post_text">
 				${post.text}
 			</div>
+			<div class=" post_date">
+                3
+			</div>
 			${createPostLikes(post)}
 			<div class="comments_container">
 				<textarea class="comment_input_text"></textarea>
@@ -84,13 +92,20 @@ function createPost(post) {
 	`
 }
 
+// თარღის დავალება-- :დდდ ღერთო :დდდ ეს ტესს კი გადის მარა გასაკეთებელია :დდდდ
+
 function createComment(comment) {
 	return `<div class="comment_container">
+	    <button class="delete_comment" onclick="getCommentDeleteButton(...)">
+	       delete comment
+        </button>
 		<div class="comment_text">
 		${comment.text}
 		</div>
 	</div>`
 }
+
+// მაღლა კომენტარის წაშლის ღილაკი დავამატე, ფუნქცია აკლია.
 
 function newComment(postId) {
 	var postElem = document.getElementById(`post-${postId}`)
