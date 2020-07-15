@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>test confguratoini</title>
+	<meta charset="utf-8">
+	<style>
+		body {
+			font-size: 0.8em;
+		}
+	</style>
+</head>
+<body>
+	<div id="app">
+		<p>კონკრეტული ჯგუფის ტესტების ჩართვა/გამორთვა. ასევე ტესტერების დროებით გათიშვა.გირჩევთ ის ჯგუფი იყოს ხოლმე ჩართული, რომელზეც 
+		მუშაობთ, მაგრამ პერიოდულად დანარჩენიც გადაამოწმეთ ხოლმე. ცვლილებების შენახვა აუცილებელია. ახალი კონფიგურაცია აისახება გვერდის reload-ის შემდეგ. </p>
+		<p>ტესტების შესავალი (intro) მხოლოდ მას მერე გამორთეთ, რაც ყურადღებით წაიკითხავთ.</p>
+		<div id="config">
+			
+		</div>
+		<button onclick="setConfig()">update</button>
+	</div>
+	<script src="./config.js"></script>
+	<script>
+		function main() {
+			var elem  = document.querySelector(`div#config`)
+			configOptions
+			.map(e => getConfigElement(e, config[e]))
+			.forEach(e => elem.appendChild(e))
+		}
+		function getConfigElement(name, value) {
+			const container = document.createElement('div')
+			const label = document.createElement('label')
+			const elem = document.createElement('input')
+			elem.type = "checkbox"
+			elem.id = name
+			elem.checked = value
+			label.innerText = name
+			label.appendChild(elem)
+			container.appendChild(label)
+			return container
+		}
+		function readConfigElement(name) {
+			return document.querySelector(`input#${name}`).checked
+		}
+		function setConfig() {
+			configOptions.map(e => config[e] = readConfigElement(e))
+			localStorage.setItem('config', JSON.stringify(config))
+		}
+		main()
+
+	</script>
+</body>
+</html>

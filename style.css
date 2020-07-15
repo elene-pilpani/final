@@ -1,0 +1,126 @@
+#app {
+	width: 60%;
+	margin: auto;
+	padding: 20px;
+	font-family: monospace;
+	background-color: #cee5d6;
+}
+
+#testconfig {
+	width: 50%;
+	height: 300px;
+	position: absolute;
+	background: white;
+	z-index: 9;
+}
+#post_text {
+	width: 100%;
+	height: 60px;
+	padding: 10px;
+	border-color: #ffffff;
+}
+
+#new_post {
+    float: right;
+    background-color: #fbf1c8;
+    border-color: #ffffff;
+	margin: 10px;
+	color: #3f060f;
+	padding: 3px;
+}
+
+
+#username {
+	float: right;
+}
+
+.container {
+	margin: 10px;
+	padding: 10px;
+	border-color: #ffffff;
+}
+
+.post_title {
+	font-weight: bold;
+	color: #fffdfd;
+	background-color: #70c2a9;
+	padding: 2px;
+}
+
+.post_like_button {
+	float: right;
+	background-color: #fbf1c8;
+    border-color: #ffffff;
+	padding: 2px;
+	color: #3f060f;
+}
+
+.post_delete_button {
+	float: right;
+	background-color: #fbf1c8;
+    border-color: #ffffff;
+	padding: 2px;
+	color: #3f060f;
+}
+
+.post_likes_container {
+	color: #3f060f;
+}
+
+.comment_input_text{
+    border-color: #ffffff;
+    padding: 9px;
+    width: 70%;
+}
+
+.comments_feed{
+    margin: 10px;
+}
+
+.new_comment{
+    position: absolute;
+    right: 278px; 
+    background-color: #fbf1c8;
+    border-color: #ffffff;
+    margin: 30px;
+	padding: 2px;
+	color: #3f060f;
+}
+
+body{
+    background-color: #e1e5f9;
+}
+
+#username{
+	position: absolute;
+	border-color: #f3f9fc;;
+	padding: 9px;
+}
+
+#password{
+	position: absolute;
+	border-color: #f3f9fc;
+	padding: 9px;
+}
+
+#login{
+	padding: 2px;
+	color: #3f060f;
+	background-color: #fbf1c8;
+	border-color: #ffffff;
+	float: right;
+}
+
+#repeat_password{
+	position: absolute;
+	border-color: #f3f9fc;
+	padding: 9px;
+}
+
+#register{
+	padding: 2px;
+	color: #3f060f;
+	background-color: #fbf1c8;
+	border-color: #ffffff;
+	float: right;
+}
