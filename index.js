@@ -92,7 +92,7 @@ function createPost(post) {
 				${post.text}
 			</div>
 			<div class="post_date">
-			    ${post.date}
+			    ${day}
 			</div>
 			${createPostLikes(post)}
 			<div class="comments_container">
