@@ -49,7 +49,9 @@ function newPost() {
 	document.getElementById("post_text").value = "";
 }
 
-
+//ფიდში post ელემენტს დაუმატეთ ახალი div, რომლის კლასი არის post_date. მისი მნიშვნელობა უნდა იყოს დაპოსტვის დღე (მხოლოდ თარიღი)
+var date =  new Date();
+var day = date.getDay();
 
 function getCommentId() {
 	return ++COMMENTID
