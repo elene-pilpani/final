@@ -45,6 +45,8 @@ function newPost() {
 	if(getPostText().length != 0){
 		addNewPost(elem)
 	}
+	//ახალი პოსტის გამოქვეყნების შემდეგ post_text ველი გასუფთავდეს
+	document.getElementById("post_text").value = "";
 }
 
 
