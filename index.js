@@ -4,8 +4,15 @@ var posts = new Database('posts')
 
 function displayAllPosts() {
 	var allPosts = posts.getAll()
+	// ფიდის მოწესრიგება
 	allPosts.sort(function(post1, post2) {
-		return post1.likes.length - post2.likes.length
+		if (post1.date - post2.date != 0){
+	     	return post1.date - post2.date
+	    }else{
+			var postC1 = post1.likes.length + post1.comments.length 
+			var postC2 = post2.likes.length + post2.comments.length 
+			return postC1.length - postC2.length 
+		}
 	})
 	for (let post of allPosts) {
 		var elem = createPost(post)
@@ -21,22 +28,26 @@ function displayAllPosts() {
 	return allPosts
 }
 
+
 displayAllPosts()
 
 function newPost() {
 	var post = posts.create({
 		text: getPostText(),
 		user: getUser(),
-		likes: []
+		likes: [],
+		//თარიღის შენახვა 
+		date: new Date(),
+		comments : []
 	})
 	var elem = createPost(post)
 	//ახალი პოსტი არ დაიდოს, თუ post_text ველში ტექსტი არ არის შეყვანილი
 	if(getPostText().length != 0){
 		addNewPost(elem)
 	}
-	//ახალი პოსტის გამოქვეყნების შემდეგ post_text ველი გასუფთავდეს
-	document.getElementById("post_text").value = "";
 }
+
+
 
 function getCommentId() {
 	return ++COMMENTID
@@ -45,8 +56,6 @@ function getPostText() {
 	var postInputElement = document.getElementById('post_text')
 	return postInputElement.value
 }
-
-
 
 function getUser() {
 	return localStorage.getItem('currentUser') || 'unknown user'
@@ -78,8 +87,8 @@ function createPost(post) {
 			<div class="post_text">
 				${post.text}
 			</div>
-			<div class=" post_date">
-                3
+			<div class="post_date">
+			    ${post.date}
 			</div>
 			${createPostLikes(post)}
 			<div class="comments_container">
@@ -94,7 +103,6 @@ function createPost(post) {
 	`
 }
 
-// თარღის დავალება-- :დდდ ღერთო :დდდ ეს ტესს კი გადის მარა გასაკეთებელია :დდდდ
 
 function createComment(comment) {
 	return `<div class="comment_container">
