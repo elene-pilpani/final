@@ -51,7 +51,7 @@ function newPost() {
 
 //ფიდში post ელემენტს დაუმატეთ ახალი div, რომლის კლასი არის post_date. მისი მნიშვნელობა უნდა იყოს დაპოსტვის დღე (მხოლოდ თარიღი)
 var date =  new Date();
-var day = date.getDay();
+var day = date.getDate();
 
 function getCommentId() {
 	return ++COMMENTID
