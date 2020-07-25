@@ -144,10 +144,10 @@ function createPostLikes(post) {
 		<div class="post_likes_container">
 			<div class="post_likes_info">
 				<span class="post_likes_count">
-					${post.likes.length}
+					
 				</span> 
-				<span class="post_likes_text">
-					likes
+				<span id="likesText" class="post_likes_text">
+					
 				</span>
 			</div>
 			<button class="post_like_button" onclick="newLike(${post.id})">
@@ -162,6 +162,7 @@ function newLike(postId) {
 	var post = posts.getById(postId)
 	var user = getUser()
 	if (!post.likes.includes(user)) {
+		document.getElementById("likesText").innerText = "likes"
 		post.likes.push(user)
 	}
 	posts.update(post) 
