@@ -148,7 +148,7 @@ function addNewComment(elem, postId) {
 }
 
 
-// კომენტარის წაშლა, პარამეტრები
+// კომენტარის წაშლა, აქაა პრობლემა. 
 function deleteComment(commentId, postId){
     var commentElem = document.getElementById(`comment-${commentId}`)
     commentElem.parentNode.removeChild(commentElem)
