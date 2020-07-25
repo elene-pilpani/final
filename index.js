@@ -49,6 +49,7 @@ function newPost() {
 	document.getElementById("post_text").value = "";
 }
 
+
 //ფიდში post ელემენტს დაუმატეთ ახალი div, რომლის კლასი არის post_date. მისი მნიშვნელობა უნდა იყოს დაპოსტვის დღე (მხოლოდ თარიღი)
 var date =  new Date();
 var day = date.getDate();
@@ -56,6 +57,7 @@ var day = date.getDate();
 function getCommentId() {
 	return ++COMMENTID
 }
+
 function getPostText() {
 	var postInputElement = document.getElementById('post_text')
 	return postInputElement.value
@@ -82,7 +84,7 @@ function createPost(post) {
 		<div id="post-${post.id}" class="post container">
 			<div>
 				<button class="post_delete_button" onclick="deletePost(${post.id})">
-					delete
+					წაშალე
 				</button>
 			</div>
 			<div class="post_title">
@@ -98,7 +100,7 @@ function createPost(post) {
 			<div class="comments_container">
 				<textarea class="comment_input_text"></textarea>
 				<button class="new_comment" onclick="newComment(${post.id})">
-					add comment
+					დააკომენტარე
 				</button>
 				<div class="comments_feed">
 				</div>
@@ -110,8 +112,8 @@ function createPost(post) {
 
 function createComment(comment) {
 	return `<div class="comment_container">
-	    <button class="delete_comment" onclick="getCommentDeleteButton(...)">
-	       delete comment
+	    <button class="delete_comment" onclick="deleteComment()">
+	       წაშალე კომენტარი
         </button>
 		<div class="comment_text">
 		${comment.text}
@@ -120,7 +122,9 @@ function createComment(comment) {
 }
 
 // მაღლა კომენტარის წაშლის ღილაკი დავამატე, ფუნქცია აკლია.
-// newComment 
+
+
+// კომენტარის დამატება
 function newComment(postId) { 
     var postElem = document.getElementById(`post-${postId}`)
     var comment_input = postElem.querySelector('textarea.comment_input_text')
@@ -143,21 +147,41 @@ function addNewComment(elem, postId) {
 	postComments.insertAdjacentElement('afterbegin', commentContainer)
 }
 
+
+// კომენტარის წაშლა, პარამეტრები
+function deleteComment(commentId, postId){
+    var commentElem = document.getElementById(`comment-${commentId}`)
+    commentElem.parentNode.removeChild(commentElem)
+    var post = posts.getById(postId)
+    deleteCommentById(post.comments, commentId)
+    posts.update(post)
+}
+
+function deleteCommentById(comments, id){
+    for (var i = 0; i < comments.length; i++ ){
+        var comment = comments[i]
+        if (comment.id == id){
+            comments.splice(i, 1)
+        }
+    }
+}
+
+
 function createPostLikes(post) {
 	return `
-		<div class="post_likes_container">
-			<div class="post_likes_info">
-				<span class="post_likes_count">
-					
-				</span> 
-				<span id="likesText" class="post_likes_text">
-					
-				</span>
-			</div>
-			<button class="post_like_button" onclick="newLike(${post.id})">
-				like
-			</button>
-		</div>
+	<div class="post_likes_container">
+	<div class="post_likes_info">
+		<span class="post_likes_count">
+			
+		</span> 
+		<span id="likesText" class="post_likes_text">
+			
+		</span>
+	</div>
+	<button class="post_like_button" onclick="newLike(${post.id})">
+		დაალაიქე
+	</button>
+</div>
 	`
 }
 
@@ -168,6 +192,9 @@ function newLike(postId) {
 	if (!post.likes.includes(user)) {
 		document.getElementById("likesText").innerText = "likes"
 		post.likes.push(user)
+	}else{
+		post.likes.length --
+		document.getElementById("likesText").innerText = ""
 	}
 	posts.update(post) 
 	addNewLike(post)

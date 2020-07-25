@@ -1,0 +1,57 @@
+div {
+    padding: 11px;
+}
+
+
+#app {
+	width: 40%;
+	margin: auto;
+	padding: 30px;
+	font-family: monospace;
+    background-color: #cee5d6;
+}
+
+#testconfig {
+	width: 50%;
+	height: 300px;
+	position: absolute;
+	background: white;
+	z-index: 9;
+}
+
+
+body{
+    background-color: #e1e5f9;
+}
+
+
+#username {
+	position: absolute;
+	border-color: #f3f9fc;
+    padding: 9px;
+}
+    
+
+#password{
+	position: absolute;
+	border-color: #f3f9fc;
+    padding: 9px;
+}
+
+
+#repeat_password{
+	position: absolute;
+	border-color: #f3f9fc;
+    padding: 9px;
+}
+
+
+#register{
+    float: right;
+	padding: 5px;
+	color: #3f060f;
+	background-color: #faf3d6;
+	border-color: #ffffff;
+    
+}
+

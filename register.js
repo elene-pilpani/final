@@ -39,6 +39,4 @@ function Check(username,password){
     return true;
 
 
-    
-  
 }

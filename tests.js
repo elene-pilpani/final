@@ -102,6 +102,7 @@ config.posts && describe(`10 ქულა. პოსტები`, () => {
             და ${testConfig.postLikesCount} ელემენტებში არაფერი ეწეროს. ერთი დალაიქების შემდეგ
             ${testConfig.postLikesText} ელემენტში უნდა ეწეროს likes, 
             ${testConfig.postLikesCount} ელემენტში 1`, () => {
+                tester.getApp()
               return tester.postPost('likes count').then(() => {
                 const {likesCount, likesText} = tester.getPostLikes()
                 expect(likesCount.innerText).eql('')
@@ -160,7 +161,7 @@ config.posts && describe(`10 ქულა. პოსტები`, () => {
                     const date = new Date()
                     const lastPost = tester.getLastPostElem()
                     const dateElem = lastPost.querySelector(`div.${testConfig.postDate}`)
-                    expect(dateElem.innerText).eql(date.getDay().toString())
+                    expect(dateElem.innerText).eql(date.getDate().toString())
                 })
             })
     })
@@ -268,7 +269,7 @@ config.news_feed && describe(`5 ქულა. news feed`, () => {
             tester.getApp()
             posts.clear()
             tester.getPostsFeed().innerHTML = ''
-            const post1 = posts.create({
+            const post2 = posts.create({
                 text: 'post1 ' + randInt(),
                 date: getDate(1, 1, 2020, '13:00'),
                 likes: ['user1', 'user2'],
@@ -277,7 +278,7 @@ config.news_feed && describe(`5 ქულა. news feed`, () => {
                 {text: 'comment ' + randInt()},
                 ]
             })
-            const post2 = posts.create({
+            const post1 = posts.create({
                 text: 'post1 ' + randInt(),
                 date: getDate(1, 1, 2020, '14:45'),
                 likes: ['user1', 'user2'],
@@ -295,8 +296,8 @@ config.news_feed && describe(`5 ქულა. news feed`, () => {
             })
             const sorted = displayAllPosts()
             expect(sorted[2].id).equal(post3.id)
-            expect(sorted[1].id).equal(post2.id)
-            expect(sorted[0].id).equal(post1.id)
+            expect(sorted[1].id).equal(post1.id)
+            expect(sorted[0].id).equal(post2.id)
 
         })
 })

@@ -2,10 +2,10 @@
 
 <head>
 	<meta charset="utf-8">
-	<link rel="stylesheet" href="./style.css">
+	<link rel="stylesheet" href="./login.css">
 	<style type="text/css">
 		div {
-			padding: 15px;
+			padding: 11px;
 		}
 
 		body {
@@ -60,11 +60,13 @@
 	 -->
 	<div id="app">
 		<div>
-			<input type="text" id="username" placeholder="username">
+			<input type="text" id="username" placeholder="მომხმარებელი">
 		</div>
+		<div></div>
 		<div>
-			<input type="password" id="password" placeholder="password">
+			<input type="password" id="password" placeholder="პაროლი">
 		</div>
+		<div></div>
 		<div>
 			<div id="error_message">
 			   
@@ -72,11 +74,12 @@
 		</div>
 		<div>
 			<button id="login" onclick="login()">
-				log in
+				შესვლა
 			</button>
 
 		</div>		
 	</div>
+	<p></p>
 	<script type="text/javascript" src="./database.js"></script>
 	<script type="text/javascript" src="./login.js"></script>
 	

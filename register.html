@@ -2,24 +2,10 @@
 
 <head>
 	<meta charset="utf-8">
-	<link rel="stylesheet" href="./style.css">
+	<link rel="stylesheet" href="./register.css">
 	<style type="text/css">
-		div {
-			padding: 15px;
-		}
+		
 
-		body {
-			width: 60%;
-			margin: auto;
-		}
-
-		#testconfig {
-			width: 50%;
-			height: 300px;
-			position: absolute;
-			background: white;
-			z-index: 9;
-		}
 	</style>
 
 	<!-- for tests, DO NOT MODIFY next line -->
@@ -52,27 +38,29 @@
 	<div id="app">
 		<!--  გვერდზე არსებობს input ელემენტი, რომლის id არის username. ელემენტის type არის text -->
 		<div>
-		   <input type="text" id="username" placeholder="username">
-	    </div>
+		   <input type="text" id="username" placeholder="მომხმარებელი">
+		</div>
+		<div></div>
 		<!-- //გვერდზე არსებობს input ელემენტი, რომლის id არის password. ელემენტის type არის password -->
 		<div>
-		   <input type="password" id="password" placeholder="password">
+		   <input type="password" id="password" placeholder="პაროლი">
 		</div>
+		<div></div>
 		<!-- გვერდზე არსებობს input ელემენტი, რომლის id არის repeat_password. ელემენტის type არის password‣ -->
 		<div>
-			<input type="password" id="repeat_password" placeholder="repeat password">
+			<input type="password" id="repeat_password" placeholder="გაიმეორე პაროლი">
 		 </div>
 		 <!-- ვერდზე არსებობს რეგისტრაციის ღილაკი, რომლის id არის register. -->
 		 <div>
 			<button id="register" onclick="register()">
-				register
+				დარეგისტრირება
 			</button>
-
 		</div>
-		
+		<script type="text/javascript" src="./database.js"></script>
+	    <script type="text/javascript" src="./register.js"></script>
 	</div>
-	<script type="text/javascript" src="./database.js"></script>
-	<script type="text/javascript" src="./register.js"></script>
+	<p></p>
+	
 	
 </body>
 </html>
