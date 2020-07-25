@@ -120,15 +120,19 @@ function createComment(comment) {
 }
 
 // მაღლა კომენტარის წაშლის ღილაკი დავამატე, ფუნქცია აკლია.
-
-function newComment(postId) {
-	var postElem = document.getElementById(`post-${postId}`)
-	var comment_input = postElem.querySelector('textarea.comment_input_text')
-	const comment = {
-		text: comment_input.value,
-		id: getCommentId()
-	}
-	addNewComment(createComment(comment), postId)
+// newComment 
+function newComment(postId) { 
+    var postElem = document.getElementById(`post-${postId}`)
+    var comment_input = postElem.querySelector('textarea.comment_input_text')
+    const comment = {
+        text: comment_input.value,
+        id: getCommentId(),
+        postId: postId
+    }
+    var post = posts.getById(postId)
+    post.comments.push(comment)
+    posts.update(post)
+    addNewComment(createComment(comment), postId)
 }
 
 function addNewComment(elem, postId) {
