@@ -111,13 +111,13 @@ function createPost(post) {
 
 
 function createComment(comment) {
-	return `<div class="comment_container">
-	    <button class="delete_comment" onclick="deleteComment()">
-	       წაშალე კომენტარი
-        </button>
+	return `<div  id="comment-${comment.id}" class="comment_container">
 		<div class="comment_text">
 		${comment.text}
 		</div>
+		<button class="delete_comment" onclick="deleteComment(${comment.id}, ${comment.postId})">
+	       წაშალე კომენტარი
+        </button>
 	</div>`
 }
 
@@ -133,10 +133,12 @@ function newComment(postId) {
         id: getCommentId(),
         postId: postId
     }
-    var post = posts.getById(postId)
-    post.comments.push(comment)
+	var post = posts.getById(postId)
+	if(comment.text != ""){
+		post.comments.push(comment)
     posts.update(post)
     addNewComment(createComment(comment), postId)
+	}
 }
 
 function addNewComment(elem, postId) {
@@ -148,7 +150,7 @@ function addNewComment(elem, postId) {
 }
 
 
-// კომენტარის წაშლა, აქაა პრობლემა. 
+// კომენტარის წაშლა, პარამეტრები
 function deleteComment(commentId, postId){
     var commentElem = document.getElementById(`comment-${commentId}`)
     commentElem.parentNode.removeChild(commentElem)
@@ -156,7 +158,6 @@ function deleteComment(commentId, postId){
     deleteCommentById(post.comments, commentId)
     posts.update(post)
 }
-
 function deleteCommentById(comments, id){
     for (var i = 0; i < comments.length; i++ ){
         var comment = comments[i]
@@ -165,7 +166,6 @@ function deleteCommentById(comments, id){
         }
     }
 }
-
 
 function createPostLikes(post) {
 	return `
